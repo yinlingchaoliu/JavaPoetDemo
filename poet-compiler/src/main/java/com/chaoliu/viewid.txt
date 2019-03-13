@@ -1,0 +1,25 @@
+package com.chaoliu.javapoet;
+
+import android.support.annotation.UiThread;
+import android.view.View;
+
+import com.chaoliu.api.templete.Unbinder;
+
+public class MainActivity_ViewBinding implements Unbinder {
+
+    private MainActivity target;
+
+    @UiThread
+    public MainActivity_ViewBinding(MainActivity target, View source){
+        this.target = target;
+        target.helloTv = source.findViewById( R.id.helloTv );
+    }
+
+    @Override
+    public void unbind() {
+        target.helloTv = null;
+    }
+
+}
+
+//代码模板 javapoet
