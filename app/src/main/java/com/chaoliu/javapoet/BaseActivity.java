@@ -1,7 +1,9 @@
 package com.chaoliu.javapoet;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chaoliu.annotation.ViewId;
@@ -13,26 +15,17 @@ import com.chaoliu.api.templete.Unbinder;
  *
  * 加butterknife
  */
-public class MainActivity extends BaseActivity {
-
-    @ViewId( R.id.register )
-    Button register;
-
-    @ViewId( R.id.login )
-    Button login;
+public class BaseActivity extends AppCompatActivity {
 
     private Unbinder unbinder;
+    @ViewId(R.id.helloTv)
+    TextView helloTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
         unbinder = ButterKnife.bind( this );
-
-        helloTv.setOnClickListener( v->{
-            Toast.makeText( this,"hello butterknife",Toast.LENGTH_SHORT ).show();
-        } );
-
     }
 
     @Override

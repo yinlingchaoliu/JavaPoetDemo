@@ -1,5 +1,6 @@
 package com.chaoliu.javapoet;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
@@ -13,13 +14,13 @@ import com.chaoliu.api.templete.Unbinder;
  *
  * 加butterknife
  */
-public class MainActivity extends BaseActivity {
+public class Test2Activity extends Activity {
 
     @ViewId( R.id.register )
     Button register;
 
     @ViewId( R.id.login )
-    Button login;
+    Button helloTv;
 
     private Unbinder unbinder;
 

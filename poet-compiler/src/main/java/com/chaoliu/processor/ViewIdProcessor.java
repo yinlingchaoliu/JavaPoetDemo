@@ -3,6 +3,7 @@ package com.chaoliu.processor;
 import android.support.annotation.UiThread;
 
 import com.chaoliu.annotation.ViewId;
+import com.chaoliu.sort.TreeUtils;
 import com.chaoliu.utils.Consts;
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.ClassName;
@@ -59,6 +60,10 @@ public class ViewIdProcessor extends BaseProcessor {
             Set<? extends Element> viewIdElements = roundEnv.getElementsAnnotatedWith(ViewId.class);
             try {
                 categories( viewIdElements );
+
+                //支持多层注解 field字段去重  不需要注释掉即可
+                supportSuperAnnotation();
+
                 gennerateHelper();
             } catch (Exception e) {
                 logger.error( e );
@@ -159,14 +164,18 @@ public class ViewIdProcessor extends BaseProcessor {
         }
     }
 
+
+
     /**
-     * 将父类的ID找出来
+     *
      * @param elements
      * @throws IllegalAccessException
+     *  当前类type元素和当前类元素的列表
      */
     private void categories(Set<? extends Element> elements) throws IllegalAccessException {
         if (CollectionUtils.isNotEmpty(elements)) {
             for (Element element : elements) {
+                //获得当前元素的TypeElement
                 TypeElement enclosingElement = (TypeElement) element.getEnclosingElement();
 
                 if (element.getModifiers().contains(Modifier.PRIVATE)) {
@@ -187,6 +196,14 @@ public class ViewIdProcessor extends BaseProcessor {
         }
     }
 
+    /**
+     * Field元素 注解支持多层继承
+     * 未做算法优化，仅做测试
+     */
+    private void supportSuperAnnotation(){
+        TreeUtils tree = new TreeUtils( );
+        parentAndChild = tree.supportSuperAnnotation( parentAndChild );
+    }
 
     //建议这种写法,减少改字符串
     @Override

@@ -13,13 +13,10 @@ import com.chaoliu.api.templete.Unbinder;
  *
  * 加butterknife
  */
-public class MainActivity extends BaseActivity {
+public class NStageActivity extends TestActivity {
 
-    @ViewId( R.id.register )
-    Button register;
-
-    @ViewId( R.id.login )
-    Button login;
+    @ViewId( R.id.stage )
+    Button stage;
 
     private Unbinder unbinder;
 
@@ -33,6 +30,13 @@ public class MainActivity extends BaseActivity {
             Toast.makeText( this,"hello butterknife",Toast.LENGTH_SHORT ).show();
         } );
 
+        login.setOnClickListener( v->{
+            Toast.makeText( this,"登录",Toast.LENGTH_SHORT ).show();
+        } );
+
+        stage.setOnClickListener( v->{
+            Toast.makeText( this,"别看我层数多，但是能取",Toast.LENGTH_SHORT ).show();
+        } );
     }
 
     @Override

@@ -8,18 +8,17 @@ import com.chaoliu.annotation.ViewId;
 import com.chaoliu.api.core.ButterKnife;
 import com.chaoliu.api.templete.Unbinder;
 
+import java.util.Map;
+
 /**
  * 注解+javapoet 自动生成模板
  *
  * 加butterknife
  */
-public class MainActivity extends BaseActivity {
+public class TestActivity extends MainActivity {
 
-    @ViewId( R.id.register )
-    Button register;
-
-    @ViewId( R.id.login )
-    Button login;
+    @ViewId( R.id.guess )
+    Button guess;
 
     private Unbinder unbinder;
 
@@ -29,7 +28,7 @@ public class MainActivity extends BaseActivity {
         setContentView( R.layout.activity_main );
         unbinder = ButterKnife.bind( this );
 
-        helloTv.setOnClickListener( v->{
+        guess.setOnClickListener( v->{
             Toast.makeText( this,"hello butterknife",Toast.LENGTH_SHORT ).show();
         } );
 
