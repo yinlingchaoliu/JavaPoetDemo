@@ -2,10 +2,7 @@ package com.chaoliu.javapoet;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.chaoliu.annotation.ViewId;
 import com.chaoliu.api.core.ButterKnife;
 import com.chaoliu.api.templete.Unbinder;

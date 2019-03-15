@@ -24,6 +24,7 @@ public class Consts {
     public static final String FRAGMENT = "android.app.Fragment";
     public static final String FRAGMENT_V4 = "android.support.v4.app.Fragment";
     public static final String VIEW = "android.view.View";
+    public static final String UI_THREAD="android.support.annotation.UiThread";
 
     // Custom interface
     private static final String API_PACKAGE = "com.chaoliu.api";

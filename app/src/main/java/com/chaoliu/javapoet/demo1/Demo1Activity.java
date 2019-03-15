@@ -24,9 +24,8 @@ public class Demo1Activity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
-        View sourceView = this.getWindow().getDecorView();
         //绑定视图
-        unbinder = new Demo1Activity_ViewBinding( this,sourceView );
+        unbinder = new Demo1Activity_ViewBinding( Demo1Activity.this,getWindow().getDecorView() );
 
         helloTv.setOnClickListener( v->{
             Toast.makeText( this,"hello butterknife",Toast.LENGTH_SHORT ).show();

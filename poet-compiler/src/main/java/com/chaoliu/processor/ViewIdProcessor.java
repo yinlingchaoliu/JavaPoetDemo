@@ -1,7 +1,5 @@
 package com.chaoliu.processor;
 
-import android.support.annotation.UiThread;
-
 import com.chaoliu.annotation.ViewId;
 import com.chaoliu.sort.TreeUtils;
 import com.chaoliu.utils.Consts;
@@ -82,7 +80,7 @@ public class ViewIdProcessor extends BaseProcessor {
         //用于判断当前类类型
         TypeMirror viewTm =  elementUtils.getTypeElement( Consts.VIEW ).asType();
 
-        //ClassName.get(element.asType())
+        TypeElement uiThreadType =  elementUtils.getTypeElement( Consts.UI_THREAD );
 
         if (MapUtils.isNotEmpty( parentAndChild )){
 
@@ -113,7 +111,7 @@ public class ViewIdProcessor extends BaseProcessor {
 
                 //新建构造方法Target_ViewBinding(Target target,View source)
                 MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder()
-                        .addAnnotation( UiThread.class )
+                        .addAnnotation( ClassName.get( uiThreadType ) )
                         .addModifiers( Modifier.PUBLIC )
                         .addParameter( TypeName.get( typeElement.asType() ),"target" )
                         .addParameter( TypeName.get( viewTm ),"source" )
@@ -163,8 +161,6 @@ public class ViewIdProcessor extends BaseProcessor {
 
         }
     }
-
-
 
     /**
      *

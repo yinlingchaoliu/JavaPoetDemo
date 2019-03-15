@@ -3,7 +3,6 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':poet-annotation')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.squareup:javapoet:1.11.1'
     implementation 'com.google.auto.service:auto-service:1.0-rc3'
     implementation 'org.apache.commons:commons-lang3:3.5'

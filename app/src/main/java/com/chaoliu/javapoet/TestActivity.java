@@ -20,6 +20,9 @@ public class TestActivity extends MainActivity {
     @ViewId( R.id.guess )
     Button guess;
 
+    @ViewId( R.id.login )
+    Button helloTv;
+
     private Unbinder unbinder;
 
     @Override
